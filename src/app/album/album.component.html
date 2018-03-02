@@ -1,0 +1,51 @@
+<a routerLink=''>Home</a>
+<h3>Albums</h3>
+<main class="mdl-layout__content">
+
+  <div *ngIf="selection.selected.length > 0 && selection.selected.length <=2">
+    <div class="button-row" style="text-align: right">
+      <a mat-raised-button (click)="selectedAlbumId()">Show Photos</a>
+    </div>
+    <br />
+  </div>
+  <div *ngIf="selection.selected.length > 2">
+    <mat-chip-list class="mat-chip-list-stacked">
+      <mat-chip selected="true" [color]="'warn'">
+        Minimum one and maximum 2 albums can be selected.
+      </mat-chip>
+    </mat-chip-list>
+    <br />
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="albumDetail">
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          Select
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="album">
+        <mat-header-cell *matHeaderCellDef (click)="showSelectedCount()"> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <a routerLink="/album/user/{{element.id}}">{{element.title}} </a></mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</main>
