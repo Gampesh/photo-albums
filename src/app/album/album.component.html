@@ -3,10 +3,8 @@
   <a mat-raised-button routerLink="">Home</a>
 </div>
 <h3>Albums</h3>
-<main class="mdl-layout__content">
-
   <div *ngIf="selection.selected.length > 0 && selection.selected.length <=2">
-    <div class="button-row" style="text-align: right">
+    <div class="button-row">
       <a mat-raised-button (click)="selectedAlbumId()">Show Photos</a>
     </div>
     <br />
@@ -51,4 +49,3 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
-</main>
