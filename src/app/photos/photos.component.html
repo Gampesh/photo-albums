@@ -1,8 +1,22 @@
-<main class="mdl-layout__content"><a routerLink=''>Home</a>
-<mat-card class="example-card" *ngFor="let photos of photoOfAlbum1" fxLayout="row" >
+<main class="mdl-layout__content">
+<div class="button-row">
+  <a mat-raised-button routerLink="">Home</a>
+</div>
+  <br />
+<div>
+  <mat-chip-list class="mat-chip-list-stacked">
+    <mat-chip selected="true" [color]="'primary'">
+      Showing photos from <strong style="color: sandybrown">{{albumSequence}}</strong> album
+    </mat-chip>
+  </mat-chip-list>
+  <br />
+</div>
+
+<mat-card class="example-card" *ngFor="let photo of photos" fxLayout="row" >
   <mat-card-header>
-    <mat-card-title>{{photos.title}}</mat-card-title>
+    <mat-card-title>{{photo.title}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="{{photos.url}}" alt="{{photos.title}}">
+  <img mat-card-image src="{{photo.url}}" alt="{{photo.title}}">
 </mat-card>
 </main>
+

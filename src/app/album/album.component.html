@@ -1,4 +1,7 @@
-<a routerLink=''>Home</a>
+<!--<a routerLink=''>Home</a>-->
+<div class="button-row">
+  <a mat-raised-button routerLink="">Home</a>
+</div>
 <h3>Albums</h3>
 <main class="mdl-layout__content">
 
@@ -35,7 +38,7 @@
       <!-- Position Column -->
       <ng-container matColumnDef="album">
         <mat-header-cell *matHeaderCellDef (click)="showSelectedCount()"> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <a routerLink="/album/user/{{element.id}}">{{element.title}} </a></mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->
