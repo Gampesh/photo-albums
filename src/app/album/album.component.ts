@@ -37,8 +37,6 @@ export class AlbumComponent implements OnInit {
     });
     let albumIds = JSON.stringify(this.albumId);
     this.route.navigate(['photo/album', albumIds]);
-    console.log(albumIds);
-    console.log(JSON.parse(albumIds));
   }
 
   //

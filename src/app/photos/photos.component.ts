@@ -32,8 +32,6 @@ export class PhotosComponent implements OnInit {
   }
 
   private rotateAlbums() {
-    console.log(typeof this.albumIds[1] != "undefined");
-    console.log(this.albumIds[1]);
     if(typeof this.albumIds[1] != 'undefined') {
       Observable.interval(20 * 1000).subscribe(() => {
         if(this.repeat) {
