@@ -29,4 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Technical Details
 1. Added Material table and imported it to app-module
-2. Just for have good UI added Mategrial css to index.html
+2. Just to have good UI added Mategrial css to index.html
