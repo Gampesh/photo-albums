@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource} from '@angular/material';
 import { UserService } from './user.service';
 
 @Component({
@@ -13,10 +13,9 @@ export class UserComponent implements OnInit {
   userDetail: any;
   constructor(private userService: UserService) {
     this.userService.getUserDetails().subscribe((res) => {
-      this.userDetail = new MatTableDataSource(res.json());
+      this.userDetail = new MatTableDataSource(res);
     })
   }
-
   ngOnInit() {}
 }
 

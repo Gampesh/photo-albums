@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
+
 import { PhotosService } from './photos.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class PhotosComponent implements OnInit {
     this.albumIds = JSON.parse(albumIds);
 
     this.photosService.getPhotosForAlbums().subscribe((res) => {
-      res.json().map((photo) => {
+      res.map((photo) => {
         this.managePhotosOfAlbum(photo);
        });
     });

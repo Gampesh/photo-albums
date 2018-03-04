@@ -1,6 +1,6 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource, MatButtonModule, MatChip } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlbumService } from './album.service';
@@ -19,7 +19,7 @@ export class AlbumComponent implements OnInit {
   constructor(private albumService: AlbumService, private activatedRoute: ActivatedRoute, private route: Router) {
     let userId = +this.activatedRoute.snapshot.paramMap.get('id');
     this.albumService.getUserAlbumList().subscribe((res) => {
-      let albums = res.json().filter((album) => album.userId == userId);
+      let albums = res.filter((album) => album.userId == userId);
       this.albumDetail = new MatTableDataSource(albums);
     });
   }

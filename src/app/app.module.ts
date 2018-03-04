@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { MatTableModule, MatCardModule, MatCheckboxModule, MatButtonModule, MatChipsModule } from  '@angular/material';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
-
+import { AppMaterialModules } from './material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,13 +22,10 @@ import { PhotosService } from './photos/photos.service';
   ],
   imports: [AppRoutingModule,
     BrowserModule,
-    MatTableModule,
-    MatCardModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    HttpModule,
+    AppMaterialModules,
+    HttpModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [UserService, AlbumService, PhotosService],
   bootstrap: [AppComponent]
 })
