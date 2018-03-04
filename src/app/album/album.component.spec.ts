@@ -13,12 +13,15 @@ describe('AlbumComponent', () => {
   let albumService: any;
   let backend: MockBackend;
   let mockRouter: any;
+  let router: Router;
 
   class MockRouter   {
     url: string = 'album';
   }
   beforeEach(async(() => {
     mockRouter = new MockRouter();
+    router = jasmine.createSpyObj('Router', [ 'navigate' ]);
+    console.log(router);
     albumService = jasmine.createSpyObj('AlbumService', ['getUserAlbumList']);
     albumService.getUserAlbumList.and.returnValue({subscribe: callback => callback([''])});
     TestBed.configureTestingModule({
@@ -26,7 +29,7 @@ describe('AlbumComponent', () => {
       providers: [
         { provide: AlbumService, useValue: albumService },
         { provide: ActivatedRoute, useValue: {snapshot: { paramMap:  { get(id: string) {return 1;}},},} },
-        { provide: Router, useValue: mockRouter },
+        { provide: Router, useValue: router },
         ConnectionBackend,
         MockBackend,
         Http
@@ -46,4 +49,11 @@ describe('AlbumComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call selectedAlbumId', async(() => {
+    let someDealerOrUsername: string = 'TESTVALUE';
+    component.selectedAlbumId();
+    expect(router.navigate).toHaveBeenCalledWith(
+      ['photo/album', '[]']);
+  }));
 });
